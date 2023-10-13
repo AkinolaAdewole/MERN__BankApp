@@ -252,3 +252,4 @@ const signup = async(req, res) => {
     });
   };
   
+  export {signin, signup, getWallets, getTransactions, transfer, getDashboard, deleteWallet, updateBalance}
