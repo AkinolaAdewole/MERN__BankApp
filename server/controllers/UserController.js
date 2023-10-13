@@ -28,7 +28,10 @@ const signup = async(req, res) => {
     
     if (user && (await user.matchPassword(password))){
         generateToken(res, user._id);
-        res.send({response:true})
+        res.send({response:true, message:""});
+    }else{
+        res.status(401);
+        
     }
   }
 
