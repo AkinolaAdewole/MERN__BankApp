@@ -16,5 +16,10 @@ import userRoutes from "./routes/userRoutes.js"
 //! WalletRoutes
 import walletRoutes from "./routes/walletRoutes.js"
 
+// Middlewares
+import { notFound, errorHandler} from './middleware/errorMiddleware.js'
+
 app.use('/user', userRoutes);
 app.use('/wallet', walletRoutes);
+app.use(notFound);
+app.use(errorHandler);
