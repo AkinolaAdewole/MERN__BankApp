@@ -11,8 +11,25 @@ const signup = async(req, res) => {
     }
 
     const newUser = new userModel(form);
-    
-    
+
+    if(newUser){
+        generateToken(res, user._id)
+        // res.status(201).json({_id:user.id})
+        res.send({ response: true})
+    }else{
+        res.status(400);
+        throw new Error ('Invalid user data');
+    }
   };
 
-  
+  const signin = async(req, res)=>{
+    let {username, password}= req.body;
+    const user = await userModel.findOne({ email });
+    
+    if (user && (await user.matchPassword(password))){
+        generateToken(res, user._id);
+        res.send({response:true})
+    }
+  }
+
+
