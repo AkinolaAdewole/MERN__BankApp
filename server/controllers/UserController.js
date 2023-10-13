@@ -160,4 +160,18 @@ const signup = async(req, res) => {
       }
     });
   };
+
+  
+  const getTransactions = (req, res) => {
+    // Find transactions in the database based on the user ID specified in req.body._id
+    transactionModel.find({ uid: req.body._id }, (err, result) => {
+      if (err) {
+        console.log(err); // Log any error that occurs during the database query
+      } else {
+        // Log the query result and send it as a response to the client
+        // console.log(result);
+        res.send(result);
+      }
+    });
+  };
   
