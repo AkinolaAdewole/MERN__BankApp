@@ -146,4 +146,18 @@ const signup = async(req, res) => {
       }
     });
   };
+
+  
+  const getDashboard = (req, res) => {
+    // Find users in the database based on the conditions specified in req.body
+    userModel.find(req.body, (err, result) => {
+      if (err) {
+        console.log(err); // Log any error that occurs during the database query
+      } else {
+        // Log the query result and send it as a response to the client
+        // console.log(result);
+        res.send(result);
+      }
+    });
+  };
   
