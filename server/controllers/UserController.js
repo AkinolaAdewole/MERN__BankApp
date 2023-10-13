@@ -50,6 +50,67 @@ const signup = async(req, res) => {
       }
     });
   };
+
+
+  const deleteWallet = (req, res) => {
+    let { uid, wid } = req.body;
+  
+    // Find the user with the given ID (uid)
+    userModel.findOne({ _id: uid }, (err, result) => {
+      if (err) {
+        // Handle database error if there's an issue finding the user
+        res.status(500).send({ error: 'Database error' });
+      } else {
+        // Get the user's balance from the result
+        let userBalance = result.balance;
+  
+        // Find the wallet with the given ID (wid)
+        walletModel.findOne({ _id: wid }, (err, w_result) => {
+          if (err) {
+            // Handle database error if there's an issue finding the wallet
+            res.status(500).send({ error: 'Database error' });
+          } else {
+            // Get the wallet's balance from the result
+            let walletBalance = w_result.w_balance;
+  
+            // Calculate the new user balance by adding the wallet balance
+            let newUserBalance = Number(userBalance) + Number(walletBalance);
+  
+            // Update the user's balance in the database
+            userModel.findOneAndUpdate(
+              { _id: uid },
+              { balance: newUserBalance },
+              { new: true },
+              (err, wr_result) => {
+                if (err) {
+                  // Handle database error if there's an issue updating the user's balance
+                  res.status(500).send({ error: 'Database error' });
+                } else {
+                  // Once the user's balance is successfully updated, delete the wallet
+                  walletModel.findOneAndDelete({ _id: wid }, (err, result) => {
+                    if (result) {
+                      // If the wallet is successfully deleted, create a transaction record
+                      let date = new Date().toLocaleDateString();
+                      let newAlert = {
+                        description: 'Deleted wallet Refund',
+                        amount: walletBalance,
+                        type: true,
+                        date,
+                        uid: uid,
+                      };
+                      let thisAlert = new transactionModel(newAlert);
+                      thisAlert.save();
+                    }
+                  });
+                }
+              }
+            );
+          }
+        });
+      }
+    });
+  };
+  
   
 
 
