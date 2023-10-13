@@ -175,3 +175,80 @@ const signup = async(req, res) => {
     });
   };
   
+
+  const transfer = (req, res) => {
+    let received = req.body;
+    let creditedUser;
+    let debitObject = {
+      description: received.descr,
+      date: received.date,
+      accountNo: received.accountNo,
+      amount: received.amount,
+      type: false,
+      uid: received.id,
+    };
+  
+    // Find the receiver's account based on the account number
+    userModel.findOne({ acc_no: received.accountNo }, (err, result) => {
+      if (err) {
+        res.send({ message: "Account Number doesn't exist", err });
+      } else {
+        creditedUser = result;
+  
+        // Debit the sender's account
+        userModel.findOneAndUpdate(
+          { _id: received.id },
+          { balance: received.balance },
+          { new: true },
+          (err, result) => {
+            if (err) {
+              console.log(err, "debit sender error");
+            } else {
+              // Credit the receiver's account
+              let creditedUserBalance =
+                Number(creditedUser.balance) + Number(received.amount);
+  
+              userModel.findOneAndUpdate(
+                { _id: creditedUser._id },
+                { balance: creditedUserBalance },
+                (err, result) => {
+                  if (err) {
+                    console.log(err, "failed credit user");
+                  } else {
+                    // Credit alert for the receiver
+                    let creditObject = {
+                      description: received.descr,
+                      date: received.date,
+                      accountNo: received.accountNo,
+                      amount: received.amount,
+                      type: true,
+                      uid: creditedUser._id,
+                    };
+                    let creditAlert = new transactionModel(creditObject);
+                    creditAlert.save((err) => {
+                      if (err) {
+                        res.send(err);
+                      } else {
+                        res.send("done deal");
+                      }
+                    });
+  
+                    // Alert for the sender
+                    let form = new transactionModel(debitObject);
+                    form.save((error) => {
+                      if (error) {
+                        console.log(error);
+                      } else {
+                        console.log("success");
+                      }
+                    });
+                  }
+                }
+              );
+            }
+          }
+        );
+      }
+    });
+  };
+  
