@@ -113,4 +113,37 @@ const signup = async(req, res) => {
   
   
 
-
+  const updateBalance = (req, res) => {
+    // Find and update the user's balance in the database
+    userModel.findOneAndUpdate(
+      { _id: req.body.id }, // Find the user by their unique ID
+      { balance: req.body.balance }, // Update the user's balance with the provided value
+      { new: true }, // Return the updated user document
+      (err, result) => {
+        // Callback function after the update operation
+        console.log(result); // Log the updated user document
+        res.send(result); // Send the updated user document as a response
+        console.log("updated"); // Log a success message
+      }
+    );
+  
+    // Create a new transaction record
+    let newTransaction = {
+      type: req.body.type,
+      amount: req.body.amount,
+      date: req.body.date,
+      description: req.body.description,
+      uid: req.body.id,
+    };
+  
+    // Create a new instance of the transactionModel and save it to the database
+    let form = new transactionModel(newTransaction);
+    form.save((error) => {
+      if (error) {
+        console.log(error); // Log any error that occurs during the save operation
+      } else {
+        console.log("Success"); // Log a success message
+      }
+    });
+  };
+  
