@@ -69,3 +69,4 @@ const createWallet = (req, res) => {
     });
   };
   
+  export { createWallet, fundWallet }
