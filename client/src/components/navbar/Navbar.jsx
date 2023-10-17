@@ -5,7 +5,7 @@ import './style/navbar.css'
 const Navbar = () => {
   return (
     <>
-          <nav className="navbar navbar-expand-lg bg-light bg-gradient shadow-sm sticky-top z-1000 p-0">
+          <nav className="navbar navbar-expand-lg bg-success  sticky-top z-1000 p-0">
                 <div className="d-flex">
                   <Link className="navbar-brand" to="/">
                     {/* <img src={logo} alt="" width={120} /> */}
