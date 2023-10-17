@@ -9,6 +9,7 @@ const Navbar = () => {
                 <div className="d-flex">
                   <Link className="navbar-brand" to="/">
                     {/* <img src={logo} alt="" width={120} /> */}
+                    Akinola
                   </Link>
                   <button
                     className="navbar-toggler"
