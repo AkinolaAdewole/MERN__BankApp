@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
           <nav className="navbar navbar-expand-lg nav1  sticky-top z-1000 p-0">
-                <div className="d-flex">
+                <div className="container-fluid">
                   <Link className="navbar-brand" to="/">
                     {/* <img src={logo} alt="" width={120} /> */}
                     Akinola
