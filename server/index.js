@@ -26,3 +26,9 @@ app.use('/user', userRoutes);
 app.use('/wallet', walletRoutes);
 app.use(notFound);
 app.use(errorHandler);
+
+const PORT = 4300
+
+app.listen(PORT,()=>{
+    console.log(`server running on port ${port}`);
+})
