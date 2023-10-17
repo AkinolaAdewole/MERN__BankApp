@@ -10,4 +10,4 @@ const transactionSchema =mongoose.Schema({
 })
 
 const transactionModel = mongoose.model("acc_user", transactionSchema);
-module.exports = transactionModel 
+export default transactionModel

@@ -30,5 +30,5 @@ app.use(errorHandler);
 const PORT = 4300
 
 app.listen(PORT,()=>{
-    console.log(`server running on port ${port}`);
+    console.log(`server running on port ${PORT}`);
 })

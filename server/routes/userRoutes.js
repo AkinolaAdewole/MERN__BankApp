@@ -4,7 +4,7 @@ import {
     signup, signin, getWallets, deleteWallet,
     updateBalance, getTransactions, transfer, getDashboard } from '../controllers/UserController.js';
 
-import { protect } from '../middleware/authMiddleware.js.js'
+import { protect } from '../middleware/authMiddleware.js'
 
 router.get("/",(req,res)=>{
     res.send(" Server is ready")
