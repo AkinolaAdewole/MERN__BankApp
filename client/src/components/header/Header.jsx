@@ -47,9 +47,10 @@ const Header = () => {
                         <div className='text-danger'>Safeguard</div>
                         <div className='text-white'> Your Account</div>
                       </h1>
-                      <p>
+                      <p className='text-white'>
                         We would <strong>NEVER</strong> call,SMS or email requesting for <br />
-                        your card details, PIN, Token codes
+                        your card details, PIN, Token codes, Mobile/Internet <br />
+                        Banking login details
                       </p>
                     </div>
                   </div>
