@@ -48,9 +48,9 @@ const Header = () => {
                         <div className='text-white'> Your Account</div>
                       </h1>
                       <p className='text-white'>
-                        We would <strong>NEVER</strong> call,SMS or email requesting for <br />
-                        your card details, PIN, Token codes, Mobile/Internet <br />
-                        Banking login details
+                        We will <strong>NEVER</strong> contact you via phone calls, SMS, or email to request 
+                        your card details, PIN, token codes, mobile/internet banking login details, 
+                        or any other account-related information.
                       </p>
                     </div>
                   </div>
