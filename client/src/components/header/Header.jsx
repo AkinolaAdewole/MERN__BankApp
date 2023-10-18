@@ -1,4 +1,5 @@
 import React from 'react'
+import fraud from '../resources/fraud.jpg'
 
 const Header = () => {
   return (
@@ -53,7 +54,11 @@ const Header = () => {
                         or any other account-related information.
                       </p>
                     </div>
+                    <div>
+                     <img src={fraud} alt="" />
+                    </div>
                   </div>
+                  
                  </div>
               </div>
             </div>
