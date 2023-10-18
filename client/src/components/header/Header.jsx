@@ -12,14 +12,14 @@ const Header = () => {
 
             <div className="carousel-inner">
               <div className="carousel-item active">
-                  <div className="row vh-100 align-items-center">
+                  <div className="row vh-100 bg-dark align-items-center">
                       <div className='col-12 col-md-7 p-5'>
                         <div className='col-10 mx-auto'>
-                            <h1 className='fw-bold'>
+                            <h1 className='fw-bold text-white'>
                               Deliver a frictionless payment experience that delights customers.
                             </h1>
 
-                            <h1 className='fw-light'>
+                            <h1 className='fw-light text-white'>
                               Creating a business is a challenging endeavor. Receiving payments should be straightforward.
                             </h1>
                         </div>
@@ -29,23 +29,23 @@ const Header = () => {
 
 
               <div class="carousel-item">
-                 <div className="row vh-100 align-items-center"> 
+                 <div className="row vh-100 bg-dark align-items-center"> 
                     <div className='col-12 col-md-7 p-5'>
                       <div className='col-10 mx-auto'>
-                        <h1 className='fw-bold'> Banking is personal</h1>
-                        <h1 className='fw-light'> We understand personal</h1>
+                        <h1 className='fw-bold text-white'> Banking is personal</h1>
+                        <h1 className='fw-light text-white'> We understand personal</h1>
                       </div>
                     </div>
                   </div>
               </div>
 
               <div class="carousel-item">
-                <div className="row vh-100  align-items-center">
+                <div className="row vh-100 bg-dark align-items-center">
                   <div className='col-12 col-md-7 p-5'>
                     <div className='col-10 mx-auto'>
                       <h1 className='fw-bold'>
                         <div className='text-danger'>Safeguard</div>
-                        <div> Your Account</div>
+                        <div className='text-white'> Your Account</div>
                       </h1>
                       <p>
                         We would <strong>NEVER</strong> call,SMS or email requesting for <br />
