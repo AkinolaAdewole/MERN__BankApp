@@ -47,7 +47,10 @@ const Header = () => {
                         <div className='text-danger'>Safeguard</div>
                         <div> Your Account</div>
                       </h1>
-                      <p>We would <strong>NEVER</strong> call,SMS,</p>
+                      <p>
+                        We would <strong>NEVER</strong> call,SMS or email requesting for <br />
+                        your card details, PIN, Token codes
+                      </p>
                     </div>
                   </div>
                  </div>
