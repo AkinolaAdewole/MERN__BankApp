@@ -47,6 +47,7 @@ const Header = () => {
                         <div className='text-danger'>Safeguard</div>
                         <div> Your Account</div>
                       </h1>
+                      <p>We would <strong>NEVER</strong> call,SMS,</p>
                     </div>
                   </div>
                  </div>
