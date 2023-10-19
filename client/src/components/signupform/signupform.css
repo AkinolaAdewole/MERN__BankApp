@@ -1,5 +1,5 @@
 .signupform {
-    background: linear-gradient(90deg,rgba(0,0,0,.6),rgba(0,0,0,.4),rgba(0,0,0,.6)),url(/static/media/freedom.a4e5f23….jpg);
+    background:url('../resources/freedom.jpg');
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
