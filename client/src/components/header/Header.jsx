@@ -58,7 +58,7 @@ const Header = () => {
                         </div>
                     </div>
                   </div>
-                  
+                  <div className="col-5 d-none d-md-block h-100 carousel-3"></div>
                  </div>
               </div>
             </div>
