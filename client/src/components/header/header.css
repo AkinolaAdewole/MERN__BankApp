@@ -10,7 +10,16 @@
     z-index: 1500;
 }
 .errorbackground{
-    background: linear-gradient(-45deg, #03277007, #0327705b), url("/src/resources/seafood.jpg");
+    /* background: linear-gradient(-45deg, #03277007, #0327705b), url("/src/resources/seafood.jpg"); */
     background-size: cover;
     background-position: center;
+}
+
+
+.flex1{
+    display: flex;
+}
+.img1{
+    height: 200px;
+    width: 200px;
 }
