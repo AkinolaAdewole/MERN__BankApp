@@ -44,7 +44,7 @@ const Navbar = () => {
                     Signup
                   </Link>
                   <Link className="nav-link me-4 text-white" to="/signin">
-                    <button className="btn btn-primary px-5 rounded-0 text-white">
+                    <button className="btn btn-warning px-5 rounded-0 text-white">
                       Signin
                     </button>
                   </Link>
