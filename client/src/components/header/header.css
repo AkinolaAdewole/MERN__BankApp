@@ -1,0 +1,16 @@
+.transbg{
+    
+    background: linear-gradient(-45deg, #fe71052d, #fe710581)
+}
+.trans{
+    
+    background: linear-gradient(-45deg, #0328702d, #03287081)
+}
+.z-1000{
+    z-index: 1500;
+}
+.errorbackground{
+    background: linear-gradient(-45deg, #03277007, #0327705b), url("/src/resources/seafood.jpg");
+    background-size: cover;
+    background-position: center;
+}

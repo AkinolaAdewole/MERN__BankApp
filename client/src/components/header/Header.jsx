@@ -44,15 +44,15 @@ const Header = () => {
                 <div className="row vh-100 bg-secondary align-items-center">
                   <div className='col-12 col-md-7 p-5'>
                     <div className='col-10 mx-auto'>
-                      <h1 className='fw-bold'>
-                        <div className='text-danger'>Safeguard</div>
-                        <div className='text-white'> Your Account</div>
-                      </h1>
-                      <p className='text-white'>
-                        We will <strong>NEVER</strong> contact you via phone calls, SMS, or email to request 
-                        your card details, PIN, token codes, mobile/internet banking login details, 
-                        or any other account-related information.
-                      </p>
+                        <h1 className='fw-bold'>
+                          <div className='text-danger'>Safeguard</div>
+                          <div className='text-white'> Your Account</div>
+                        </h1>
+                        <p className='text-white'>
+                          We will <strong>NEVER</strong> contact you via phone calls, SMS, or email to request 
+                          your card details, PIN, token codes, mobile/internet banking login details, 
+                          or any other account-related information.
+                        </p>
                     </div>
                     <div>
                      <img src={fraud} alt="" />
