@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from 'axios'
 
 const SignupForm = () => {
   const [firstname, setfirstname] = useState("");
@@ -50,8 +50,8 @@ const SignupForm = () => {
             {/* <h1 className=""></h1> */}
           </div>
           <div className="col-7">
-            <h1 className="text-primary fw-bolder text-center mb-3">
-              Welcome, to freedom!!!
+            <h1 className="text-warning fw-bolder text-center mb-3">
+              Welcome to freedom!!!
             </h1>
             <h2 className="text-center text-secondary">Sign up</h2>
             <div className="col-9 mx-auto">
