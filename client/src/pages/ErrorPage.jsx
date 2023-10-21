@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../Navbar";
-import "../style/Header.css";
+import Navbar from "../components/navbar/Navbar";
+import "../components/header/header.css";
 
 const ErrorPage = () => {
   return (

@@ -15,6 +15,12 @@
     background-position: center;
 }
 
+
+.carousel-2{
+    background: url('../resources/boy.jpg');
+    background-size: cover;
+    background-position: center;
+}
 .carousel-3{
     background: url('../resources/fraud.jpg');
     background-size: cover;

@@ -31,13 +31,14 @@ const Header = () => {
 
 
               <div class="carousel-item">
-                 <div className="row vh-100 bg-dark align-items-center"> 
+                 <div className="row vh-100 bg-white align-items-center"> 
                     <div className='col-12 col-md-7 p-5'>
                       <div className='col-10 mx-auto'>
-                        <h1 className='fw-bold text-warning'> Banking is personal</h1>
-                        <h1 className='fw-light text-white'> We understand personal</h1>
+                        <h1 className='fw-bold text-dark'> Banking is personal</h1>
+                        <h1 className='fw-light text-dark'> We understand personal ...</h1>
                       </div>
                     </div>
+                    <div className="col-5 d-none d-md-block h-100 carousel-2"></div>
                   </div>
               </div>
 
