@@ -14,7 +14,7 @@ const SignupForm = () => {
   let navigate = useNavigate();
 
   const signup = () => {
-    let acc_no = Number("11"+Math.floor(Math.random() * 10e7));
+    let acc_no = Number("12"+Math.floor(Math.random() * 10e7));
     let newAccount = {
       firstname,
       lastname,
@@ -24,10 +24,10 @@ const SignupForm = () => {
       acc_no,
       balance:0,
     };
-    let EP= process.env.REACT_APP_EP
-    let endpoint = "https://bank-r.herokuapp.com/user/signup";
+    // let EP= process.env.REACT_APP_EP
+    // let endpoint = "http://localhost:4300/signup";
     axios
-      .post("/user/signup", newAccount)
+      .post("http://localhost:4300/user/signup", newAccount)
       .then((result) => {
         if (result.data.response) {
           
