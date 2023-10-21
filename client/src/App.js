@@ -7,6 +7,10 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import ErrorPage from './pages/ErrorPage';
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Your Bootstrap-related code here
+});
+
 function App() {
   return (
     <div>
