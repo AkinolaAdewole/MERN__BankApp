@@ -4,11 +4,11 @@ import axios from 'axios'
 import '../signupform/signupform.css'
 
 const SignupForm = () => {
-  const [firstname, setfirstname] = useState("");
-  const [lastname, setlastname] = useState("");
-  const [username, setusername] = useState("");
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   // const [balance, setbalance] = useState(0);
   const [message, setmessage] = useState("");
   let navigate = useNavigate();
@@ -24,14 +24,12 @@ const SignupForm = () => {
       acc_no,
       balance:0,
     };
-    // let EP= process.env.REACT_APP_EP
-    // let endpoint = "http://localhost:4300/signup";
     axios
       .post("http://localhost:4300/user/signup", newAccount)
       .then((result) => {
         if (result.data.response) {
           
-          setmessage(result.data.message);
+          // setmessage(result.data.message);
           navigate("/signin");
         } else {
           setmessage(result.data.message);
@@ -68,42 +66,41 @@ const SignupForm = () => {
                 name="firstname"
                 className="mb-3 form-control"
                 placeholder="First Name"
-                onChange={(e) => setfirstname(e.target.value)}
+                onChange={(e) => setFirstname(e.target.value)}
               />
               <input
                 type="text"
                 name="lastname"
                 className="mb-3 form-control"
                 placeholder="Last Name"
-                onChange={(e) => setlastname(e.target.value)}
+                onChange={(e) => setLastname(e.target.value)}
               />
               <input
                 type="text"
                 name="username"
                 className="mb-3 form-control"
                 placeholder="Username"
-                onChange={(e) => setusername(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
               />
               <input
                 type="email"
                 name="email"
                 className="mb-3 form-control"
                 placeholder="Email"
-                onChange={(e) => setemail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="password"
                 name="password"
                 className="mb-3 form-control"
                 placeholder="Password"
-                onChange={(e) => setpassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 onClick={() => signup()}
-                className="btn btn-lg btn-secondary form-control"
+                className="btn btn-lg btn-warning form-control"
               >
-                {" "}
-                Signup{" "}
+                Signup
               </button>
             </div>
           </div>

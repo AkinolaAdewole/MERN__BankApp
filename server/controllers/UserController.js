@@ -4,25 +4,15 @@ import transactionModel from '../models/TransactionModel.js';
 import walletModel from '../models/WalletModel.js';
 
 const signup = async(req, res) => {
-    const form = req.body
-    const userExist = await userModel.findOne({ email });
-
-    if(userExist){
-        res.status(400);
-        throw new Error ('User already exist');
+  let form = new userModel(req.body);
+  form.save((err) => {
+    if (err) {
+      res.send({ reponse: false, message: err.message });
+    } else {
+      res.send({ message: "Signup Succesful", response: true });
     }
-
-    const newUser = new userModel(form);
-
-    if(newUser){
-        generateToken(res, user._id)
-        // res.status(201).json({_id:user.id})
-        res.send({ response: true})
-    }else{
-        res.status(400);
-        throw new Error ('Invalid user data');
-    }
-  };
+  });
+};
 
   const signin = async(req, res)=>{
     let {username, password}= req.body;
