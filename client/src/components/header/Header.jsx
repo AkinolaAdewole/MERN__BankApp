@@ -25,8 +25,8 @@ const Header = () => {
                               Creating a business is a challenging endeavor. 
                               Receiving payments should be straightforward.
                             </h1>
-                            
-                            <button className="btn px-4 btn-primary rounded-0 text-white">
+
+                            <button className="btn px-4 btn-warning rounded-0 text-white">
                               Learn More
                             </button>
                         </div>

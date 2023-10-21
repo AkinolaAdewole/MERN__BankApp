@@ -28,7 +28,7 @@
     background-position: center;
 }
 .carousel-3{
-    background: url('../resources/fraud.jpg');
+    background:linear-gradient(90deg,#fff,rgba(0,0,0,.6),transparent), url('../resources/fraud.jpg');
     background-size: cover;
     background-position: center;
 }
