@@ -16,8 +16,14 @@
 }
 
 
+.carousel-1{
+    background:linear-gradient(90deg,#000,rgba(0,0,0,.6),transparent),url('../resources/old.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .carousel-2{
-    background: url('../resources/boy.jpg');
+    background:linear-gradient(90deg,#fff,hsla(0,0%,100%,.4),transparent), url('../resources/boy.jpg');
     background-size: cover;
     background-position: center;
 }

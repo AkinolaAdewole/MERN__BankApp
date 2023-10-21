@@ -7,9 +7,9 @@ const Header = () => {
     <>
           <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div className="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" className='bg-warning'></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" className='bg-warning'></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" className='bg-warning'></button>
             </div>
 
             <div className="carousel-inner">
@@ -17,15 +17,21 @@ const Header = () => {
                   <div className="row vh-100 bg-dark align-items-center">
                       <div className='col-12 col-md-7 p-5'>
                         <div className='col-10 mx-auto'>
-                            <h1 className='fw-bold text-info'>
+                            <h1 className='fw-bold text-warning'>
                               Deliver a frictionless payment experience that delights customers.
                             </h1>
 
                             <h1 className='fw-light text-white'>
-                              Creating a business is a challenging endeavor. Receiving payments should be straightforward.
+                              Creating a business is a challenging endeavor. 
+                              Receiving payments should be straightforward.
                             </h1>
+                            
+                            <button className="btn px-4 btn-primary rounded-0 text-white">
+                              Learn More
+                            </button>
                         </div>
                       </div>
+                      <div className="col-5 d-none d-md-block h-100 carousel-1"></div>
                   </div>
               </div>
 
