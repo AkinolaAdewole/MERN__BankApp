@@ -11,7 +11,7 @@ router.get("/",(req,res)=>{
 })
 
 router.post("/signup", signup);
-router.post("signin", signin);
+router.post("/signin", signin);
 
 router.post("/dashboard", getDashboard);
 router.post("/getwallets", getWallets);

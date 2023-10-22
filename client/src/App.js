@@ -7,7 +7,7 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import ErrorPage from './pages/ErrorPage';
 import DashboardPage from './pages/DashboardPage'
-import DashboardRoute from './pages/DashboardPage';
+import DashboardRoute from './pages/DashboardRoute';
 
 document.addEventListener("DOMContentLoaded", function () {
   // Your Bootstrap-related code here
@@ -20,6 +20,7 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='/signup' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} />
+        <Route path='/dashboard' element={<DashboardPage />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
 
