@@ -8,6 +8,8 @@ const Signinform = ({signin,message}) => {
 
     let details = {em_username, password}
 
+    // const signin=()=>{}
+
     
   return (
     <>
@@ -38,8 +40,8 @@ const Signinform = ({signin,message}) => {
               onChange={(e)=>setpassword(e.target.value)}
             />
             <button onClick={()=>signin(details )} className="btn btn-lg rounded-0 btn-info form-control">
-              {" "}
-              Signin{" "}
+              
+              Signin
             </button>
           </div>
         </div>

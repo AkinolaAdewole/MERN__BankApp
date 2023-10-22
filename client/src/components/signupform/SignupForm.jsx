@@ -14,7 +14,7 @@ const SignupForm = () => {
   let navigate = useNavigate();
 
   const signup = () => {
-    let acc_no = Number("12"+Math.floor(Math.random() * 10e7));
+    let acc_no = `21${ Math.floor(Math.random()*100000000)}`
     let newAccount = {
       firstname,
       lastname,
