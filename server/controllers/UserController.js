@@ -15,7 +15,7 @@ const signup = async (req, res) => {
 
 
   const signin = async(req, res)=>{
-    let {username, password}= req.body;
+    let {email, password}= req.body;
     const user = await userModel.findOne({ email });
     
     if (user && (await user.matchPassword(password))){

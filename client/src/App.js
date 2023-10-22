@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import ErrorPage from './pages/ErrorPage';
+import DashboardPage from './pages/DashboardPage'
+import DashboardRoute from './pages/DashboardPage';
 
 document.addEventListener("DOMContentLoaded", function () {
   // Your Bootstrap-related code here

@@ -1,14 +1,30 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
-const Signinform = ({signin,message}) => {
+const Signinform = () => {
    
-    const [em_username , setem_username ] = useState();
+    const [email , setEmail ] = useState('');
     const [password, setpassword] = useState("");
+    const [message, setmessage] = useState("");
 
-    let details = {em_username, password}
+    let navigate = useNavigate();
 
-    const signin=()=>{}
+    let details = {email, password}
+
+    const signin=()=>{
+      axios.post.post("http://localhost:4300/user/signin", details)
+      .then((result)=>{
+        if (result.data.response) {
+          
+          // setmessage(result.data.message);
+          navigate("/");
+        } else {
+          setmessage(result.data.message);
+        }
+      })
+    }
 
     
   return (
@@ -30,7 +46,7 @@ const Signinform = ({signin,message}) => {
               name="email"
               className="mb-3 form-control"
               placeholder="Email"
-              onChange={(e)=>setem_username(e.target.value)}
+              onChange={(e)=>setEmail(e.target.value)}
             />
             <input
               type="password"
@@ -39,7 +55,7 @@ const Signinform = ({signin,message}) => {
               placeholder="Password"
               onChange={(e)=>setpassword(e.target.value)}
             />
-            <button onClick={()=>signin(details )} className="btn btn-lg rounded-0 btn-info form-control">
+            <button onClick={()=>signin()} className="btn btn-lg rounded-0 btn-info form-control">
               
               Signin
             </button>
