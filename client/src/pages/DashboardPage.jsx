@@ -4,8 +4,11 @@ import DashboardNav from '../components/NavbarDash'
 const DashboardPage = () => {
   return (
     <>
-      <DashboardNav />
-     DashboardPage
+      <div className='row'>
+        <DashboardNav />
+        <div className='col-12 col-md-8 p-3'></div>
+      </div>
+      
     </>
   )
 }
