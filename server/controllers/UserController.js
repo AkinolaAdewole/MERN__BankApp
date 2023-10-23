@@ -139,18 +139,39 @@ const signup = async (req, res) => {
   };
 
   
-  const getDashboard = (req, res) => {
-    // Find users in the database based on the conditions specified in req.body
-    userModel.find(req.body, (err, result) => {
-      if (err) {
-        console.log(err); // Log any error that occurs during the database query
-      } else {
-        // Log the query result and send it as a response to the client
-        // console.log(result);
-        res.send(result);
+  // const getDashboard = (req, res) => {
+  //   // Find users in the database based on the conditions specified in req.body
+  //   userModel.find(req.body, (err, result) => {
+  //     if (err) {
+  //       console.log(err); // Log any error that occurs during the database query
+  //     } else {
+  //       // Log the query result and send it as a response to the client
+  //       // console.log(result);
+  //       res.send(result);
+  //     }
+  //   });
+  // };
+
+  const getDashboard = async (req, res) => {
+    try {
+      // Attempt to find users in the database based on the conditions specified in req.body
+      const users = await userModel.find(req.body);
+  
+      // Check if any users were found
+      if (users.length === 0) {
+        // Return a 404 status and a message if no users were found
+        return res.status(404).json({ error: 'No users found' });
       }
-    });
+  
+      // Send the list of users as a response
+      res.status(200).json(users);
+    } catch (error) {
+      console.error('Error in /user/dashboard route:', error);
+      // Handle database errors and send an error response with a 500 status code
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
   };
+  
 
   const getUserProfile=async(req,res)=>{
     const user = {
