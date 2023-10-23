@@ -1,5 +1,6 @@
 import React from 'react'
 import DashboardNav from '../components/NavbarDash'
+import Welcome from '../components/Welcome'
 
 const DashboardPage = () => {
   return (
