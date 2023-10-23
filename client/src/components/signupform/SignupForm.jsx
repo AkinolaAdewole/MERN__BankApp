@@ -14,14 +14,14 @@ const SignupForm = () => {
   let navigate = useNavigate();
 
   const signup = () => {
-    let acc_no = `21${ Math.floor(Math.random()*100000000)}`
+    let acctno = `21${ Math.floor(Math.random()*100020700)}`
     let newAccount = {
       firstname,
       lastname,
       username,
       email,
       password,
-      acc_no,
+      acctno,
       balance:0,
     };
     axios
