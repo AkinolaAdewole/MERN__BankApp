@@ -101,6 +101,7 @@ const signup = async (req, res) => {
     });
   };
   
+
   
 
   const updateBalance = (req, res) => {
@@ -150,6 +151,17 @@ const signup = async (req, res) => {
       }
     });
   };
+
+  const getUserProfile=async(req,res)=>{
+    const user = {
+        _id:req.user._id,
+        firstname:req.user.firstname,
+        lastname:req.user.lastname,
+        email:req.user.email
+
+    }
+    res.status(200).json(user);
+}
 
   
   const getTransactions = (req, res) => {
@@ -242,4 +254,4 @@ const signup = async (req, res) => {
     });
   };
   
-  export {signin, signup, getWallets, getTransactions, transfer, getDashboard, deleteWallet, updateBalance}
+  export {signin,getUserProfile, signup, getWallets, getTransactions, transfer, getDashboard, deleteWallet, updateBalance}
