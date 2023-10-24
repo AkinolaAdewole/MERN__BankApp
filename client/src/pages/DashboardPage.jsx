@@ -13,18 +13,18 @@ const DashboardPage = () => {
   // console.log(userId);
 
   useEffect(() => {
-    // Assuming that you have the user ID available in your props
+    // user ID available in my props
     const endpoint = `http://localhost:4300/user/dashboard/${userId}`;
 
     axios.get(endpoint)
       .then((response) => {
-        setUser(response.data); // Assuming the response contains user data
-        console.log(response.data);
+        setUser(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []); // Add any dependencies needed for the effect
+  }, []);
 
   return (
     <>
