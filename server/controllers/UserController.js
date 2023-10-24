@@ -19,9 +19,10 @@ const signup = async (req, res) => {
     const user = await userModel.findOne({ email });
     
     if (user && (await user.matchPassword(password))){
-        generateToken(user);
-        res.send({response:true, message:""});
-        res.json({ user, token }); // Send the user data and token in the response
+      generateToken(res, user);
+
+        // Send the user data and token in the response
+        res.json({ user,response: true, message: "" });
     }else{
         res.status(401);
         throw new Error('Invalid email or password')
