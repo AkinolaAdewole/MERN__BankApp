@@ -15,7 +15,7 @@ router.post("/signup", signup);
 router.post("/signin", signin);
 
 
-router.get("/dashboard/:userId",protect,getDashboard)
+router.get("/dashboard/:userId",getDashboard)
 
 router.post("/getwallets", getWallets);
 router.post("/deleter", deleteWallet);

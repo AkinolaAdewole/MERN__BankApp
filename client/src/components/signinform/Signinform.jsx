@@ -27,16 +27,17 @@ const Signinform = () => {
     
             // Update state with user and token
             setUser(user);
-            setToken(token)
-
-             // Log the user
-             console.log(user);
-            //  console.log(token);
-
-            // setUserId(user._id);
-            // console.log(userId);
-
-            let userId= user._id
+            setToken(token);
+    
+            // Log the user and token
+            // console.log(user);
+            // console.log(token);
+    
+            // Set the token in localStorage
+            localStorage.setItem('token', token);
+    
+            let userId = user._id;
+    
             // Navigate to the dashboard
             navigate(`/dashboard/${userId}`);
           } else {
@@ -48,6 +49,7 @@ const Signinform = () => {
           console.error("Error:", error);
         });
     };
+    
     
 
     
