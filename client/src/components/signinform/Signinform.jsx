@@ -27,16 +27,19 @@ const Signinform = () => {
     
             // Update state with user and token
             setUser(user);
-            // setToken(token);
+            setUserId(user._id);
+
+            // Log the user, token, and message
+            // console.log(user);
+            console.log(userId);
     
             // Navigate to the dashboard
-            // navigate(`/dashboard/${userId}`);
+            navigate(`/dashboard/${userId}`);
+
 
     
-            // Log the user, token, and message
-            console.log(user);
-            console.log(user._id);
-            // console.log(message);
+
+            
           } else {
             // Update the message state with the error message
             setmessage(result.data.message);
@@ -77,7 +80,7 @@ const Signinform = () => {
               placeholder="Password"
               onChange={(e)=>setpassword(e.target.value)}
             />
-            <button onClick={()=>signin()} className="btn btn-lg rounded-0 btn-info form-control">
+            <button onClick={()=>signin()} className="btn btn-lg rounded-0 btn-warning form-control">
               
               Signin
             </button>

@@ -13,7 +13,7 @@ router.get("/",(req,res)=>{
 router.post("/signup", signup);
 router.post("/signin", signin);
 
-router.route('/dashboard').get(getDashboard)
+router.get("/dashboard/:userId", getDashboard)
 router.post("/getwallets", getWallets);
 router.post("/deleter", deleteWallet);
 

@@ -43,18 +43,16 @@ const signup = async (req, res) => {
   // };
 
   const getDashboard = async (req, res) => {
+    const id = req.params.id;
     try {
-      // Attempt to find users in the database based on the conditions specified in req.body
-      const users = await userModel.find(req.body);
-  
-      // Check if any users were found
-      if (users.length === 0) {
-        // Return a 404 status and a message if no users were found
-        return res.status(404).json({ error: 'No users found' });
-      }
-  
-      // Send the list of users as a response
-      res.status(200).json(users);
+     const user = await userModel.findById(id)
+     if (user) {
+      // Remove the password field from the user document
+      const { password, ...otherDetails } = user._doc;
+      res.status(200).json(otherDetails);
+    } else {
+      res.status(404).json("No such User");
+    }
     } catch (error) {
       console.error('Error in /user/dashboard route:', error);
       // Handle database errors and send an error response with a 500 status code
@@ -68,7 +66,7 @@ const getUser = async (req, res) => {
 
   try {
     // Find a user by their ID
-    const user = await UserModel.findById(id);
+    const user = await userModel.findById(id);
     if (user) {
       // Remove the password field from the user document
       const { password, ...otherDetails } = user._doc;

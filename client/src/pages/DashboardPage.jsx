@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import DashboardNav from '../components/NavbarDash';
 import Welcome from '../components/Welcome';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const DashboardPage = (props) => {
+const DashboardPage = () => {
   const [user, setUser] = useState(null);
 
-  console.log(props);
+  const { userId} = useParams()
+  // console.log(userId);
 
   useEffect(() => {
     // Assuming that you have the user ID available in your props
-    const userId = props.id
     const endpoint = `http://localhost:4300/user/dashboard/${userId}`;
 
     axios.get(endpoint)
