@@ -40,6 +40,7 @@ import asyncHandler from "express-async-handler"
 
 const protect = async (req, res, next) => {
   const token = req.cookies.accessToken;
+  console.log(req.cookies);
 
   if (token) {
       try {
