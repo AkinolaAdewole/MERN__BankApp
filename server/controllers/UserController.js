@@ -29,67 +29,23 @@ const signup = async (req, res) => {
     }
   }
 
-  // const getDashboard = async (req, res) => {
-  //   const id = req.params.userId;
-  //   try {
-  //    const user = await userModel.findById(id)
-  //    if (user) {
-  //     // Remove the password field from the user document
-  //     const { password, ...otherDetails } = user._doc;
-  //     res.status(200).json(otherDetails);
-  //   } else {
-  //     res.status(404).json("No such User");
-  //   }
-  //   } catch (error) {
-  //     console.error('Error in /user/dashboard route:', error);
-  //     // Handle database errors and send an error response with a 500 status code
-  //     res.status(500).json({ error: 'Internal Server Error' });
-  //   }
-  // };
-
   const getDashboard = async (req, res) => {
     const id = req.params.userId;
-    // Extract the token from the request's cookies
-    const token = req.cookies.accessToken;
-    console.log(token);
-  
-    // Check if the token is present
-    if (!token) {
-      return res.status(401).json({ error: 'Unauthorized' });
-    }
-  
     try {
-      // Verify the token with your secret key
-      const decoded = jwt.verify(token, process.env.JWT_SECRET); // Replace with your actual secret key
-      // console.log('Decoded Token:', decoded);
-
-      // Assuming the JWT contains the user's ID
-      const userId = decoded.userId;
-  
-      // Use the userId to retrieve user data from the database
-      const user = await userModel.findById(userId);
-  
-      if (user) {
-        // Remove the password field from the user document
-        const { password, ...otherDetails } = user._doc;
-        res.status(200).json(otherDetails);
-      } else {
-        res.status(404).json("No such User");
-      }
+     const user = await userModel.findById(id)
+     if (user) {
+      // Remove the password field from the user document
+      const { password, ...otherDetails } = user._doc;
+      res.status(200).json(otherDetails);
+    } else {
+      res.status(404).json("No such User");
+    }
     } catch (error) {
       console.error('Error in /user/dashboard route:', error);
-  
-      if (error.name === 'JsonWebTokenError') {
-        res.status(401).json({ error: 'Invalid token' });
-      } else {
-        // Handle other errors, such as token expiration
-        res.status(500).json({ error: 'Internal Server Error' });
-      }
+      // Handle database errors and send an error response with a 500 status code
+      res.status(500).json({ error: 'Internal Server Error' });
     }
   };
-  
-
-
   
   const getWallets = (req, res) => {
     // Use the walletModel (presumably a Mongoose model) to find data in the database that matches the conditions specified in req.body.

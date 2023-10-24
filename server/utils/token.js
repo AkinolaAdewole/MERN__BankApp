@@ -16,8 +16,6 @@ const generateToken = (res, user) => {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
   })
-  // .status(200)
-  // .json({ message: "Logged in successfully 😊 👌" });
 
 };
 
