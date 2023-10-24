@@ -11,30 +11,42 @@ const Signinform = () => {
 
     // Inside your component, use state to manage user data and token
       const [user, setUser] = useState(null);
+      const [userId, setUserId] = useState(null);
       const [token, setToken] = useState(null);
 
     let navigate = useNavigate();
 
     let details = {email, password}
 
-    const signin=()=>{
+    const signin = () => {
       axios.post("http://localhost:4300/user/signin", details)
-      .then((result)=>{
-        if (result.data.response) {
-          
-          setmessage(result.data.message);
-          console.log(message);
-          setUser(user);
-          setToken(token);
+        .then((result) => {
+          if (result.data.response) {
+            // Assuming the server sends user and token in the response
+            const { user, token, message } = result.data;
+    
+            // Update state with user and token
+            setUser(user);
+            // setToken(token);
+    
+            // Navigate to the dashboard
+            // navigate(`/dashboard/${userId}`);
 
-          navigate("/dashboard");
-          console.log(user);
-          console.log(token);
-        } else {
-          setmessage(result.data.message);
-        }
-      })
-    }
+    
+            // Log the user, token, and message
+            console.log(user);
+            console.log(user._id);
+            // console.log(message);
+          } else {
+            // Update the message state with the error message
+            setmessage(result.data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    };
+    
 
     
   return (

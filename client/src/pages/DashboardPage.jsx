@@ -1,31 +1,45 @@
-import React, { useEffect, useState } from 'react'
-import DashboardNav from '../components/NavbarDash'
-import Welcome from '../components/Welcome'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import DashboardNav from '../components/NavbarDash';
+import Welcome from '../components/Welcome';
+import axios from 'axios';
 
-const DashboardPage = () => {
-  const [user, setUser] = useState([]);
+const DashboardPage = (props) => {
+  const [user, setUser] = useState(null);
+
+  console.log(props);
 
   useEffect(() => {
-    let endpoint = "http://localhost:4300/user/dashboard"
-  axios.get(endpoint).then((response)=>{
-    setUser(response)
-  }).catch((error)=>{
-    console.error(error);
-  })
-  }, [])
-  
-  console.log(user);
+    // Assuming that you have the user ID available in your props
+    const userId = props.id
+    const endpoint = `http://localhost:4300/user/dashboard/${userId}`;
+
+    axios.get(endpoint)
+      .then((response) => {
+        setUser(response.data); // Assuming the response contains user data
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []); // Add any dependencies needed for the effect
 
   return (
     <>
       <div className='row'>
         <DashboardNav />
-        <div className='col-12 col-md-8 p-3'></div>
+        <div className='col-12 col-md-8 p-3'>
+          {user ? (
+            // Display user data
+            <>
+              <Welcome username={user.username} />
+              {/* Render other user data here */}
+            </>
+          ) : (
+            <p>Loading user data...</p>
+          )}
+        </div>
       </div>
-      
     </>
-  )
-}
+  );
+};
 
-export default DashboardPage
+export default DashboardPage;

@@ -26,7 +26,6 @@ const signup = async (req, res) => {
     }else{
         res.status(401);
         throw new Error('Invalid email or password')
-
     }
   }
 
