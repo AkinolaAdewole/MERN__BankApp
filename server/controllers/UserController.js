@@ -19,7 +19,7 @@ const signup = async (req, res) => {
     const user = await userModel.findOne({ email });
     
     if (user && (await user.matchPassword(password))){
-      const token = generateToken(res,user);
+      generateToken(res,user);
 
         // Send the user data and token in the response
         res.json({ user, response: true, message: "" });
