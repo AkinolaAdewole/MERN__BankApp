@@ -17,6 +17,7 @@ const DashboardPage = () => {
     axios.get(endpoint)
       .then((response) => {
         setUser(response.data); // Assuming the response contains user data
+        console.log(user);
       })
       .catch((error) => {
         console.error(error);
@@ -31,7 +32,7 @@ const DashboardPage = () => {
           {user ? (
             // Display user data
             <>
-              <Welcome username={user.username} />
+              <Welcome firstname={user.firstname} />
               {/* Render other user data here */}
             </>
           ) : (

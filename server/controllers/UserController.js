@@ -43,7 +43,7 @@ const signup = async (req, res) => {
   // };
 
   const getDashboard = async (req, res) => {
-    const id = req.params.id;
+    const id = req.params.userId;
     try {
      const user = await userModel.findById(id)
      if (user) {
