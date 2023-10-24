@@ -11,7 +11,7 @@ const Signinform = () => {
 
     // Inside your component, use state to manage user data and token
       const [user, setUser] = useState(null);
-      const [userId, setUserId] = useState(null);
+      // const [userId, setUserId] = useState(null);
       const [token, setToken] = useState(null);
 
     let navigate = useNavigate();
@@ -27,11 +27,15 @@ const Signinform = () => {
     
             // Update state with user and token
             setUser(user);
-            setUserId(user._id);
 
-            // Log the user, token, and message
-            // console.log(user);
-            console.log(userId);
+             // Log the user
+             console.log(user);
+
+
+            // setUserId(user._id);
+            // console.log(userId);
+
+            let userId= user._id
     
             // Navigate to the dashboard
             navigate(`/dashboard/${userId}`);

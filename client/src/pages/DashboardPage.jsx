@@ -19,7 +19,7 @@ const DashboardPage = () => {
     axios.get(endpoint)
       .then((response) => {
         setUser(response.data); // Assuming the response contains user data
-        console.log(user);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
