@@ -11,9 +11,10 @@ const generateToken = (res, user) => {
     expiresIn: '1h',
   });
 
-  return res.cookie("accessToken", token, {
+  res.cookie("accessToken", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    // secure: process.env.NODE_ENV === "production",
+    maxAge: 6000000
   })
 
 };
