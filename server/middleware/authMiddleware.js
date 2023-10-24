@@ -31,7 +31,7 @@ const protect =(req, res) => {
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
-      return res.status(401).send('Unauthorized');
+      return res.status(401).send('Unauthorized no token');
     }
 
     // Token is valid; you can use the `decoded` data for authorization.

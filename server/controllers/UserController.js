@@ -29,55 +29,62 @@ const signup = async (req, res) => {
     }
   }
 
-    // const getDashboard = (req, res) => {
-  //   // Find users in the database based on the conditions specified in req.body
-  //   userModel.find(req.body, (err, result) => {
-  //     if (err) {
-  //       console.log(err); // Log any error that occurs during the database query
-  //     } else {
-  //       // Log the query result and send it as a response to the client
-  //       // console.log(result);
-  //       res.send(result);
-  //     }
-  //   });
+  // const getDashboard = async (req, res) => {
+  //   const id = req.params.userId;
+  //   try {
+  //    const user = await userModel.findById(id)
+  //    if (user) {
+  //     // Remove the password field from the user document
+  //     const { password, ...otherDetails } = user._doc;
+  //     res.status(200).json(otherDetails);
+  //   } else {
+  //     res.status(404).json("No such User");
+  //   }
+  //   } catch (error) {
+  //     console.error('Error in /user/dashboard route:', error);
+  //     // Handle database errors and send an error response with a 500 status code
+  //     res.status(500).json({ error: 'Internal Server Error' });
+  //   }
   // };
 
   const getDashboard = async (req, res) => {
-    const id = req.params.userId;
-    try {
-     const user = await userModel.findById(id)
-     if (user) {
-      // Remove the password field from the user document
-      const { password, ...otherDetails } = user._doc;
-      res.status(200).json(otherDetails);
-    } else {
-      res.status(404).json("No such User");
+    // Extract the token from the request's cookies
+    const token = req.cookies.token;
+  
+    // Check if the token is present
+    if (!token) {
+      return res.status(401).json({ error: 'Unauthorized' });
     }
+  
+    try {
+      // Verify the token with your secret key
+      const decoded = jwt.verify(token, 'yourSecretKey'); // Replace with your actual secret key
+  
+      // Assuming the JWT contains the user's ID
+      const userId = decoded.userId;
+  
+      // Use the userId to retrieve user data from the database
+      const user = await userModel.findById(userId);
+  
+      if (user) {
+        // Remove the password field from the user document
+        const { password, ...otherDetails } = user._doc;
+        res.status(200).json(otherDetails);
+      } else {
+        res.status(404).json("No such User");
+      }
     } catch (error) {
       console.error('Error in /user/dashboard route:', error);
-      // Handle database errors and send an error response with a 500 status code
-      res.status(500).json({ error: 'Internal Server Error' });
+  
+      if (error.name === 'JsonWebTokenError') {
+        res.status(401).json({ error: 'Invalid token' });
+      } else {
+        // Handle other errors, such as token expiration
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
     }
   };
-
-  // Get a user by ID
-const getUser = async (req, res) => {
-  const id = req.params.id;
-
-  try {
-    // Find a user by their ID
-    const user = await userModel.findById(id);
-    if (user) {
-      // Remove the password field from the user document
-      const { password, ...otherDetails } = user._doc;
-      res.status(200).json(otherDetails);
-    } else {
-      res.status(404).json("No such User");
-    }
-  } catch (error) {
-    res.status(500).json(error);
-  }
-};
+  
 
 
   
@@ -293,4 +300,4 @@ const getUser = async (req, res) => {
     });
   };
   
-  export {signin,getUserProfile, signup,getUser, getWallets, getTransactions, transfer, getDashboard, deleteWallet, updateBalance}
+  export {signin,getUserProfile, signup, getWallets, getTransactions, transfer, getDashboard, deleteWallet, updateBalance}

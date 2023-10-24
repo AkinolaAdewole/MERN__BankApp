@@ -11,11 +11,8 @@ const generateToken = (res, user) => {
     expiresIn: '1h',
   });
 
-  res.cookie('token', token, {
-    httpOnly: true,
-    secure: true,
-    maxAge: 2 * 60 * 60 * 1000,
-  });
+  res.cookie('token', token, { httpOnly: true, secure: true, path: '/' });
+
 };
 
 export default generateToken;

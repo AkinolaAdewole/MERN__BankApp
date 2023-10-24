@@ -1,7 +1,7 @@
 import express from 'express';
 const router= express.Router();
 import { 
-    signup, signin, getWallets, deleteWallet, getUserProfile,getUser,
+    signup, signin, getWallets, deleteWallet, getUserProfile,
     updateBalance, getTransactions, transfer, getDashboard } from '../controllers/UserController.js';
 
 import { protect } from '../middleware/authMiddleware.js'
@@ -13,7 +13,7 @@ router.get("/",(req,res)=>{
 router.post("/signup", signup);
 router.post("/signin", signin);
 
-router.route("/dashboard/:userId").get(protect,getDashboard)
+router.route("/dashboard/:userId").get(getDashboard)
 router.post("/getwallets", getWallets);
 router.post("/deleter", deleteWallet);
 
