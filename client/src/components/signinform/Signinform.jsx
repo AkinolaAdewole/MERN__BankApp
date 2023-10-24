@@ -27,9 +27,12 @@ const Signinform = () => {
     
             // Update state with user and token
             setUser(user);
+            setToken(token)
 
              // Log the user
              console.log(user);
+             console.log(token);
+
 
 
             // setUserId(user._id);

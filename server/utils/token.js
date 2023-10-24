@@ -10,6 +10,7 @@ const generateToken = (res, user) => {
     secure: process.env.NODE_ENV !== 'development',
     sameSite: 'strict',
     maxAge: 2 * 60 * 60 * 1000,
+    path: '/', // Set this to the correct path
   });
 };
 
