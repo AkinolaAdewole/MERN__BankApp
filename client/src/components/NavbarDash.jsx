@@ -6,23 +6,23 @@ const DashboardNav = () => {
         <nav className="navbar  h-100 bg-warning">
           <div className="container-fluid">
             <div className="navbar-nav  mx-auto">
-              <Link className="nav-link text-success active" aria-current="page" to="/dashboard/">
+              <Link className="nav-link text-dark active" aria-current="page" to="/dashboard/">
                 <i className="fa fa-home" aria-hidden="true"></i>
               </Link>
               <hr />
-              <Link className="nav-link text-success" to="/dashboard/sendMoney">
+              <Link className="nav-link text-dark" to="/dashboard/sendMoney">
                 <i className="fa fa-send-o" aria-hidden="true"></i>
               </Link>
               <hr />
-              <Link className="nav-link text-success" to="/dashboard/transactions">
+              <Link className="nav-link text-dark" to="/dashboard/transactions">
                 <i className="fa fa-money" aria-hidden="true"></i>
               </Link>
               <hr />
-              <Link className="nav-link text-success" to="/dashboard/messages">
+              <Link className="nav-link text-dark" to="/dashboard/messages">
                 <i className="fa fa-envelope" aria-hidden="true"></i>
               </Link>
               <hr />
-              <Link className="nav-link text-success" to="/dashboard/user">
+              <Link className="nav-link text-dark" to="/dashboard/user">
                 <i className="fa fa-user-circle-o" aria-hidden="true"></i>
               </Link>
               <hr />
