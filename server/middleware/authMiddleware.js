@@ -23,15 +23,15 @@ import asyncHandler from "express-async-handler"
 //   }
 //   });
 
-const protect = (req, res, next) => {
+const protect =async (req, res, next) => {
   const token = req.cookies.accessToken;
+  console.log(token);
   if (!token) {
     return res.sendStatus(403);
   }
   try {
-    const data = jwt.verify(token, "YOUR_SECRET_KEY");
-    req.userId = data.id;
-    req.userRole = data.role;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = await userModel.findById(decoded.userId).select('-password');
     return next();
   } catch {
     return res.sendStatus(403);

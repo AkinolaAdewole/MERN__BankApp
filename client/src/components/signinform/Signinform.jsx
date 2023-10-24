@@ -32,12 +32,11 @@ const Signinform = () => {
              // Log the user
              console.log(user);
             //  console.log(token);
-            
+
             // setUserId(user._id);
             // console.log(userId);
 
             let userId= user._id
-    
             // Navigate to the dashboard
             navigate(`/dashboard/${userId}`);
           } else {
