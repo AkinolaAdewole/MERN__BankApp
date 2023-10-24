@@ -22,21 +22,44 @@ import asyncHandler from "express-async-handler"
 //   }
 //   });
 
-const protect =(req, res) => {
-  const token = req.cookies.token;
+const protect= async (req, res) => {
+  // Extract the token from the request's cookies
+  const token = req.cookies.accessToken;
+  console.log(token);
+
+  // Check if the token is present
   if (!token) {
-    return res.status(401).send('Unauthorized, no token' );
-    console.log('no token');
+    return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return res.status(401).send('Unauthorized no token');
-    }
+  try {
+    // Verify the token with your secret key
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Replace with your actual secret key
+    // console.log('Decoded Token:', decoded);
 
-    // Token is valid; you can use the `decoded` data for authorization.
-    res.send(`Hello, ${decoded.username}!`);
-  });
+    // Assuming the JWT contains the user's ID
+    const userId = decoded.userId;
+
+    // Use the userId to retrieve user data from the database
+    const user = await userModel.findById(userId);
+
+    if (user) {
+      // Remove the password field from the user document
+      const { password, ...otherDetails } = user._doc;
+      res.status(200).json(otherDetails);
+    } else {
+      res.status(404).json("No such User");
+    }
+  } catch (error) {
+    console.error('Error in /user/dashboard route:', error);
+
+    if (error.name === 'JsonWebTokenError') {
+      res.status(401).json({ error: 'Invalid token' });
+    } else {
+      // Handle other errors, such as token expiration
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
 };
 
 

@@ -48,8 +48,10 @@ const signup = async (req, res) => {
   // };
 
   const getDashboard = async (req, res) => {
+    const id = req.params.userId;
     // Extract the token from the request's cookies
-    const token = req.cookies.token;
+    const token = req.cookies.accessToken;
+    console.log(token);
   
     // Check if the token is present
     if (!token) {
@@ -58,8 +60,9 @@ const signup = async (req, res) => {
   
     try {
       // Verify the token with your secret key
-      const decoded = jwt.verify(token, 'yourSecretKey'); // Replace with your actual secret key
-  
+      const decoded = jwt.verify(token, process.env.JWT_SECRET); // Replace with your actual secret key
+      // console.log('Decoded Token:', decoded);
+
       // Assuming the JWT contains the user's ID
       const userId = decoded.userId;
   
