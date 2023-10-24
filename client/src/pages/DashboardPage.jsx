@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DashboardNav from '../components/NavbarDash';
 import Welcome from '../components/Welcome';
 import Wallets from '../components/wallet/Wallets';
+import Transactions from '../components/transactions/Transactions';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
