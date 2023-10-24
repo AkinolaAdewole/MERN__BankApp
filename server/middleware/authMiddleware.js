@@ -25,10 +25,11 @@ import asyncHandler from "express-async-handler"
 const protect =(req, res) => {
   const token = req.cookies.token;
   if (!token) {
-    return res.status(401).send('Unauthorized');
+    return res.status(401).send('Unauthorized, no token' );
+    console.log('no token');
   }
 
-  jwt.verify(token, secretKey, (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       return res.status(401).send('Unauthorized');
     }

@@ -31,10 +31,8 @@ const Signinform = () => {
 
              // Log the user
              console.log(user);
-             console.log(token);
-
-
-
+            //  console.log(token);
+            
             // setUserId(user._id);
             // console.log(userId);
 
@@ -42,11 +40,6 @@ const Signinform = () => {
     
             // Navigate to the dashboard
             navigate(`/dashboard/${userId}`);
-
-
-    
-
-            
           } else {
             // Update the message state with the error message
             setmessage(result.data.message);
@@ -64,7 +57,7 @@ const Signinform = () => {
       <div className="bg-info bg-gradient">
         <div className="row vh-100 bg-info bg-gradient align-items-center">
           <div className="col-7 mx-auto bg-light p-5 rounded-5">
-            <h1 className="text-primary text-center mb-3">Welcome, Back!!</h1>
+            <h1 className="text-warning text-center mb-3">Welcome</h1>
             <h3 className="text-center text-secondary">Sign In</h3>
             {message !== "" ? (
                 <div class="alert alert-danger border-4" role="alert">
