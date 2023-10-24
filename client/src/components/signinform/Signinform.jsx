@@ -9,6 +9,10 @@ const Signinform = () => {
     const [password, setpassword] = useState("");
     const [message, setmessage] = useState("");
 
+    // Inside your component, use state to manage user data and token
+      const [user, setUser] = useState(null);
+      const [token, setToken] = useState(null);
+
     let navigate = useNavigate();
 
     let details = {email, password}
@@ -18,9 +22,14 @@ const Signinform = () => {
       .then((result)=>{
         if (result.data.response) {
           
-          // setmessage(result.data.message);
+          setmessage(result.data.message);
+          console.log(message);
+          setUser(user);
+          setToken(token);
+
           navigate("/dashboard");
-          console.log();
+          console.log(user);
+          console.log(token);
         } else {
           setmessage(result.data.message);
         }

@@ -1,7 +1,7 @@
 import express from 'express';
 const router= express.Router();
 import { 
-    signup, signin, getWallets, deleteWallet, getUserProfile,
+    signup, signin, getWallets, deleteWallet, getUserProfile,getUser,
     updateBalance, getTransactions, transfer, getDashboard } from '../controllers/UserController.js';
 
 import { protect } from '../middleware/authMiddleware.js'
