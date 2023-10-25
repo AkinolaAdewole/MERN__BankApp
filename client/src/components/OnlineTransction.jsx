@@ -18,7 +18,7 @@ const OnlineTransaction = () => {
         <div className="row mb-5">
           <div className="col-6 border-end">
             <small>EXPIRY DATE</small>
-            <p className="m-0 fw-bold font-monospace">05/25</p>
+            <p className="m-0 fw-bold font-monospace">05/27</p>
           </div>
           <div className="col-3 border-end">
             <small>CVV</small>

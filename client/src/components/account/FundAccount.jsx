@@ -21,6 +21,12 @@ const FundAccount = () => {
 
   const componentProps={
     email,
+    amount,
+    text: 'Pay Now',
+    onSuccess: () =>{
+      alert(`Your Account`)
+    } ,
+    onClose: () => alert('Payment canceled by user.'),
   }
 
 
