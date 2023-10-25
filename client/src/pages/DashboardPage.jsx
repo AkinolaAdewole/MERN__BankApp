@@ -3,6 +3,9 @@ import DashboardNav from '../components/NavbarDash';
 import Welcome from '../components/Welcome';
 import Wallets from '../components/wallet/Wallets';
 import Transactions from '../components/transactions/Transactions';
+import OnlineTransactions from '../components/OnlineTransction'
+import AccountDetails from '../components/account/AccountDetails';
+import AccountDisplay from '../components/account/AccountDisplay';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -31,15 +34,24 @@ const DashboardPage = () => {
       <div className='row'>
         <DashboardNav />
         <div className='col-12 col-md-8 p-3'>
-          {user ? (
-            // Display user data
-            <>
-              <Welcome firstname={user.firstname} />
-              {/* Render other user data here */}
-            </>
-          ) : (
-            <p>Loading user data...</p>
-          )}
+          <div>
+              {user ? (
+                // Display user data
+                <>
+                  <Welcome firstname={user.firstname} />
+                  {/* Render other user data here */}
+                </>
+              ) : (
+                <p>Loading user data...</p>
+              )}
+          </div>
+
+          <div className="border rounded-3 p-3">
+            <AccountDetails currentUser={currentUser} />
+            <Wallets id={_id} />
+            <AccountDisplay />
+            <Transactions transactions={transactions} />
+          </div>
         </div>
       </div>
     </>
