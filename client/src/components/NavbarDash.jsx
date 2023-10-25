@@ -3,7 +3,7 @@ const DashboardNav = () => {
   return (
     <>
       <div className="col-1 vh-100 sticky-top">
-        <nav className="navbar  h-100 bg-warning">
+        <nav className="navbar  h-100 bg-success">
           <div className="container-fluid">
             <div className="navbar-nav  mx-auto">
               <Link className="nav-link text-dark active" aria-current="page" to="/dashboard/">

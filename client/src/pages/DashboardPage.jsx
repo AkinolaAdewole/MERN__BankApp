@@ -23,7 +23,7 @@ const DashboardPage = () => {
       .then((response) => {
         setUser(response.data);
         // console.log(user);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -47,11 +47,14 @@ const DashboardPage = () => {
               )}
           </div>
 
-          <div className="border rounded-3 p-3">
-            <AccountDetails />
-            {/* <Wallets id={user._id} /> */}
-            {/* <AccountDisplay /> */}
-            {/* <Transactions transactions={transactions} /> */}
+          <div>
+              {user && ( // Check if user is not null
+                <div className="border rounded-3 p-3">
+                  <AccountDetails />
+                  <Wallets id={user._id} />
+                  <AccountDisplay />
+                </div>
+              )}
           </div>
         </div>
 
