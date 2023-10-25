@@ -48,11 +48,15 @@ const DashboardPage = () => {
           </div>
 
           <div className="border rounded-3 p-3">
-            <AccountDetails currentUser={user} />
-            {/* <Wallets id={user.id} /> */}
-            <AccountDisplay />
+            <AccountDetails />
+            {/* <Wallets id={user._id} /> */}
+            {/* <AccountDisplay /> */}
             {/* <Transactions transactions={transactions} /> */}
           </div>
+        </div>
+
+        <div className="col-3 p-3 d-none d-md-block ">
+          <OnlineTransactions />
         </div>
       </div>
     </>

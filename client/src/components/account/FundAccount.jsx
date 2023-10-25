@@ -1,66 +1,39 @@
 // Import necessary dependencies and components
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PaystackButton } from "react-paystack";
+import { useParams } from "react-router-dom";
 
 // Define the FundAccount component that accepts a currentUser prop
 const FundAccount = ({ currentUser }) => {
   // Initialize a state variable to store the user's specified amount
   const [newAmount, setNewAmount] = useState("");
+  const [user, setUser] = useState(null);
 
-  // Extract user's email and set other variables for Paystack payment
-  let email = currentUser.email;
-  let publicKey = 'pk_test_81338c74c32ab94adecbb258dc43be07f645286c';
-  let name = currentUser.firstname;
+  const { userId} = useParams()
 
-  // Calculate the amount in kobo (100 kobo = 1 naira)
-  let amount = newAmount * 100;
 
-  // Calculate the new balance after funding the account
-  let balance = Number(currentUser.balance) + Number(newAmount);
+  useEffect(() => {
+    // user ID available in my props
+    const endpoint = `http://localhost:4300/user/dashboard/${userId}`;
 
-  // Get the current date as a string
-  let date = new Date().toLocaleDateString();
-
-  // Define the componentProps object for PaystackButton
-  const componentProps = {
-    email,
-    amount,
-    metadata: {
-      name,
-      phone: "",
-    },
-    publicKey,
-    text: "Pay Now",
-    onSuccess: () => {
-      // This function is called when the payment is successful
-      // Display an alert message with the funded amount
-      alert("Your Account Has been Funded with " + newAmount);
-
-      // Define the endpoint for updating the user's balance on the server
-      let endpoint = "https://bank-r.herokuapp.com/user/updateBalance";
-
-      // Create an object with data to send to the server
-      let newObject = {
-        balance: balance,
-        id: currentUser._id,
-        date,
-        type: true,
-        amount: newAmount,
-        description: "Personal Funding"
-      };
-
-      // Send a POST request to the server to update the user's balance
-      axios.post("/user/updateBalance", newObject).then((result) => {
-        console.log(result);
+    axios.get(endpoint)
+      .then((response) => {
+        setUser(response.data);
+        // console.log(user);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    },
-    onClose: () => {
-      // This function is called when the user closes the payment dialog
-      alert("Wait! You need this oil, don't go!!!!");
-    },
-  };
+  }, []);
 
+
+
+
+ 
+
+  
   // Return the JSX for the FundAccount component
   return (
     <>
@@ -106,7 +79,7 @@ const FundAccount = ({ currentUser }) => {
               </button>
 
               {/* PaystackButton component for initiating the payment */}
-              <PaystackButton className="btn btn-success" {...componentProps} />
+              <PaystackButton className="btn btn-success" />
             </div>
           </div>
         </div>
