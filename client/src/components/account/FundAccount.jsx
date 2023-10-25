@@ -95,7 +95,7 @@ const FundAccount = () => {
               </button>
 
               {/* PaystackButton component for initiating the payment */}
-              <PaystackButton className="btn btn-success" />
+              <PaystackButton className="btn btn-success" {...componentProps}  />
             </div>
           </div>
         </div>

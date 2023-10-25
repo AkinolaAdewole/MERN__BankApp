@@ -45,7 +45,7 @@ const AccountDetails = () => {
             )}
 
             <h4
-              className="btn btn-light text-primary m-1"
+              className="btn btn-light text-success m-1"
               data-bs-toggle="modal"
               data-bs-target="#FundAccount"
             >
