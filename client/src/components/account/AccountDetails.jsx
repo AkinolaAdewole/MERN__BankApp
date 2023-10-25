@@ -41,7 +41,7 @@ const AccountDetails = () => {
             <p className="text-white m-0">Account No:</p>
             {/* Display user's account number if available */}
             {user && (
-              <h3 className="font-monospace text-white">{user.acc_no}</h3>
+              <h3 className="font-monospace text-white">{user.acctno}</h3>
             )}
 
             <h4

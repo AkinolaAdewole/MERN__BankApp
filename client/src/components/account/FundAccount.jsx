@@ -5,7 +5,7 @@ import { PaystackButton } from "react-paystack";
 import { useParams } from "react-router-dom";
 
 // Define the FundAccount component that accepts a currentUser prop
-const FundAccount = ({ currentUser }) => {
+const FundAccount = () => {
   // Initialize a state variable to store the user's specified amount
   const [newAmount, setNewAmount] = useState("");
   const [user, setUser] = useState(null);
