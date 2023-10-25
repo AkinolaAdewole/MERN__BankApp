@@ -11,6 +11,11 @@ const FundAccount = () => {
   const [user, setUser] = useState(null);
 
   const { userId} = useParams()
+  let email = user.email
+  // let publickey = 
+  let amount = (newAmount*100);
+  let balance = Number(user.balance) + Number(newAmount);
+  let date = new Date().toLocaleDateString();
 
 
   useEffect(() => {
