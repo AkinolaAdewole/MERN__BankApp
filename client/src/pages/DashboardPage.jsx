@@ -47,8 +47,8 @@ const DashboardPage = () => {
           </div>
 
           <div className="border rounded-3 p-3">
-            <AccountDetails currentUser={currentUser} />
-            <Wallets id={_id} />
+            <AccountDetails currentUser={user} />
+            <Wallets id={user._id} />
             <AccountDisplay />
             <Transactions transactions={transactions} />
           </div>

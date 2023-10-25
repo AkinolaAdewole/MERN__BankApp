@@ -1,5 +1,5 @@
 import React from "react";
-import Messages from "./Messages";
+import Messages from "../components/messages/Messages";
 import OnlineCard from "./OnlineCard";
 
 const OnlineTransaction = () => {
