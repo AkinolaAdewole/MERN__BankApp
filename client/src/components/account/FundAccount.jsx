@@ -4,18 +4,24 @@ import React, { useState, useEffect } from "react";
 import { PaystackButton } from "react-paystack";
 import { useParams } from "react-router-dom";
 
-// Define the FundAccount component that accepts a currentUser prop
 const FundAccount = () => {
   // Initialize a state variable to store the user's specified amount
   const [newAmount, setNewAmount] = useState("");
   const [user, setUser] = useState(null);
 
   const { userId} = useParams()
+
+  let firstname = user.firstname
   let email = user.email
+  // console.log(firstname);
   // let publickey = 
   let amount = (newAmount*100);
   let balance = Number(user.balance) + Number(newAmount);
   let date = new Date().toLocaleDateString();
+
+  const componentProps={
+    email,
+  }
 
 
   useEffect(() => {
