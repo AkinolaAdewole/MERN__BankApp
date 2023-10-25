@@ -1,6 +1,6 @@
 import React from "react";
 import FundAccount from "./FundAccount";
-import Transfers from "./Transfers";
+import Transfers from "../Transfer";
 
 const AccountDetails = ({ currentUser }) => {
   // Destructure user data

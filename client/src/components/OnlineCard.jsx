@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/style/Header.css";
+import "../components/header/header.css";
 import chip from "./resources/chippng.png";
 import mastercard from "./resources/mastercard.png";
 

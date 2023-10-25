@@ -22,6 +22,7 @@ const DashboardPage = () => {
     axios.get(endpoint)
       .then((response) => {
         setUser(response.data);
+        console.log(user);
         // console.log(response.data);
       })
       .catch((error) => {
@@ -48,9 +49,9 @@ const DashboardPage = () => {
 
           <div className="border rounded-3 p-3">
             <AccountDetails currentUser={user} />
-            <Wallets id={user._id} />
+            {/* <Wallets id={user.id} /> */}
             <AccountDisplay />
-            <Transactions transactions={transactions} />
+            {/* <Transactions transactions={transactions} /> */}
           </div>
         </div>
       </div>
