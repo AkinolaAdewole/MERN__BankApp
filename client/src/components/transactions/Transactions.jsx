@@ -9,6 +9,7 @@ const Transactions = ({ transactions }) => {
           Transactions<i className="fa fa-info-circle" aria-hidden="true"></i>
         </h3>
 
+        {/* Buttons to filter transactions by type */}
         <button className="btn btn-outline-secondary rounded-5 px-4 me-3">
           All
         </button>
@@ -21,13 +22,15 @@ const Transactions = ({ transactions }) => {
 
         <div>
           {transactions ? (
-            transactions.map((item, value) => (
+            // Map through the transactions array and display each transaction using the TransactionEach component
+            transactions.map((item, index) => (
               <TransactionEach
                 type={item.type}
                 description={item.description}
                 accountNo={item.accountNo}
                 date={item.date}
                 amount={item.amount}
+                key={index} // It's a good practice to provide a unique key when mapping through elements
               />
             ))
           ) : (
