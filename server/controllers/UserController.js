@@ -125,12 +125,12 @@ const signup = async (req, res) => {
   const updateBalance = (req, res) => {
     // Find and update the user's balance in the database
     userModel.findOneAndUpdate(
-      { _id: req.body.id }, // Find the user by their unique ID
+      { _id: req.body.id },
       { balance: req.body.balance }, // Update the user's balance with the provided value
       { new: true },
       (err, result) => {
         // Callback function after the update operation
-        console.log(result); // Log the updated user document
+        console.log(result);
         res.send(result); // Send the updated user document as a response
         console.log("updated"); // Log a success message
       }

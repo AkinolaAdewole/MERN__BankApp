@@ -34,9 +34,11 @@ const FundAccount = () => {
       alert(`Your Account has been funded with ${newAmount}`);
       let endpoint = `http://localhost:4300/user/updatebalance/${userId}`;
       let newObject = {balance: balancee, id:id,date,type:true, amount:newAmount, description:"Personal Funding"}
-      axios.post(`http://localhost:4300/user/updatebalance/${userId}`, newObject).then((result) => {
+      axios.post(`http://localhost:4300/user/updatebalance`, newObject).then((result) => {
         console.log(result);
       });
+
+      setNewAmount("")
     } ,
     onClose: () => alert('Payment canceled by user.'),
   }
