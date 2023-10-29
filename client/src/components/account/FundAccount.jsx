@@ -10,11 +10,10 @@ const FundAccount = () => {
   const [user, setUser] = useState(null);
   const [firstname, setFirstName] = useState('')
   const [email, setEmail] = useState('');
+  const [balance, setBalance] = useState(0);
 
   const { userId} = useParams()
 
-  // let email = user.email
-  // console.log(firstname);
   // let publickey = 
   let amount = (newAmount*100);
   // let balance = Number(user.balance) + Number(newAmount);
