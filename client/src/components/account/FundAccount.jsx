@@ -10,17 +10,16 @@ const FundAccount = () => {
   const [user, setUser] = useState(null);
   const [firstname, setFirstName] = useState('')
   const [email, setEmail] = useState('');
-  const [balance, setBalance] = useState(0);
+  const [balancee, setBalancee] = useState(0);
+  const [id,setId] = useState('')
 
   const { userId} = useParams()
 
-  // let publickey = 
   let amount = (newAmount*100);
-  // let balance = Number(user.balance) + Number(newAmount);
+  let balance = Number(balancee) + Number(newAmount);
   let date = new Date().toLocaleDateString();
 
-  console.log(email);
-  console.log(firstname);
+  let publicKey = 'pk_test_7e22782b6a5fc0d219cfb6a53bc9338894712525';
 
   const componentProps={
     email,
@@ -29,9 +28,15 @@ const FundAccount = () => {
       firstname,
       phone:"",
     },
+    publicKey,
     text: 'Pay Now',
     onSuccess: () =>{
-      alert(`Your Account`)
+      alert(`Your Account has been funded with ${newAmount}`);
+      let endpoint = `http://localhost:4300/user/updatebalance/${userId}`;
+      let newObject = {balance: balancee, id:id,date,type:true, amount:newAmount, description:"Personal Funding"}
+      axios.post(`http://localhost:4300/user/updatebalance/${userId}`, newObject).then((result) => {
+        console.log(result);
+      });
     } ,
     onClose: () => alert('Payment canceled by user.'),
   }
@@ -44,11 +49,11 @@ const FundAccount = () => {
     axios.get(endpoint)
       .then((response) => {
         setUser(response.data);
-        // console.log(response.data);
+        console.log(response.data);
         setFirstName(response.data.firstname)
-        // console.log(response.data.firstname);
         setEmail(response.data.email)
-        // console.log(response.data.email);
+        setBalancee(response.data.balance)
+        setId(response.data._id)
       })
       .catch((error) => {
         console.error(error);
