@@ -8,20 +8,28 @@ const FundAccount = () => {
   // Initialize a state variable to store the user's specified amount
   const [newAmount, setNewAmount] = useState("");
   const [user, setUser] = useState(null);
+  const [firstname, setFirstName] = useState('')
+  const [email, setEmail] = useState('');
 
   const { userId} = useParams()
 
-  let firstname = user.firstname
-  let email = user.email
+  // let email = user.email
   // console.log(firstname);
   // let publickey = 
   let amount = (newAmount*100);
-  let balance = Number(user.balance) + Number(newAmount);
+  // let balance = Number(user.balance) + Number(newAmount);
   let date = new Date().toLocaleDateString();
+
+  console.log(email);
+  console.log(firstname);
 
   const componentProps={
     email,
     amount,
+    metadata: {
+      firstname,
+      phone:"",
+    },
     text: 'Pay Now',
     onSuccess: () =>{
       alert(`Your Account`)
@@ -38,6 +46,10 @@ const FundAccount = () => {
       .then((response) => {
         setUser(response.data);
         // console.log(response.data);
+        setFirstName(response.data.firstname)
+        // console.log(response.data.firstname);
+        setEmail(response.data.email)
+        // console.log(response.data.email);
       })
       .catch((error) => {
         console.error(error);
