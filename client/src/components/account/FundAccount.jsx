@@ -17,7 +17,7 @@ const FundAccount = () => {
   console.log(userId);
 
   // let amount = (newAmount*100);
-  let amount = parseFloat(newAmount) * 100; // Convert string to number for calculations
+  let amount = parseFloat(newAmount); // Convert string to number for calculations
 
   // let balance = Number(balancee) + Number(newAmount);
   let balance = balancee + amount;
