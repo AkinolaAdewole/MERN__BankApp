@@ -14,10 +14,15 @@ const FundAccount = () => {
   const [id,setId] = useState('')
 
   const { userId} = useParams()
+  console.log(userId);
 
-  let amount = (newAmount*100);
-  let balance = Number(balancee) + Number(newAmount);
+  // let amount = (newAmount*100);
+  let amount = parseFloat(newAmount) * 100; // Convert string to number for calculations
+
+  // let balance = Number(balancee) + Number(newAmount);
+  let balance = balancee + amount;
   let date = new Date().toLocaleDateString();
+  let newObject = {balance, id:id, date,type:true, amount:newAmount, description:"Personal Funding"}
 
   let publicKey = 'pk_test_7e22782b6a5fc0d219cfb6a53bc9338894712525';
 
@@ -32,8 +37,8 @@ const FundAccount = () => {
     text: 'Pay Now',
     onSuccess: () =>{
       alert(`Your Account has been funded with ${newAmount}`);
-      let endpoint = `http://localhost:4300/user/updatebalance/${userId}`;
-      let newObject = {balance: balancee, id:id,date,type:true, amount:newAmount, description:"Personal Funding"}
+      // let endpoint = `http://localhost:4300/user/updatebalance/${userId}`;
+      // let newObject = {balance: balancee, id:id,date,type:true, amount:newAmount, description:"Personal Funding"}
       axios.post(`http://localhost:4300/user/updatebalance`, newObject).then((result) => {
         console.log(result);
       });
@@ -41,6 +46,11 @@ const FundAccount = () => {
       setNewAmount("")
     } ,
     onClose: () => alert('Payment canceled by user.'),
+  }
+
+  const fundAcc=(e)=>{
+    e.preventDefault()
+    axios.post(`http://localhost:4300/user/updatebalance/${userId}`, newObject)
   }
 
 
@@ -113,7 +123,8 @@ const FundAccount = () => {
               </button>
 
               {/* PaystackButton component for initiating the payment */}
-              <PaystackButton className="btn btn-success" {...componentProps}  />
+              {/* <PaystackButton className="btn btn-success" {...componentProps}  /> */}
+              <button onClick={fundAcc}>Pay</button>
             </div>
           </div>
         </div>
