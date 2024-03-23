@@ -22,6 +22,7 @@ const signup = async (req, res) => {
       const token = generateToken(res,user);
 
         // Send the user data and token in the response
+        delete user.password;
         res.json({ user,token, response: true, message: "" });
     }else{
         res.status(401);
