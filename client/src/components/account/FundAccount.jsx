@@ -50,7 +50,7 @@ const FundAccount = () => {
 
   const fundAcc=(e)=>{
     e.preventDefault()
-    axios.post(`http://localhost:4300/user/updatebalance/${userId}`, newObject)
+    axios.post(`http://localhost:4300/user/updatebalance`, newObject)
   }
 
 

@@ -169,7 +169,7 @@ const signup = async (req, res) => {
         { new: true }
       ).exec();
   
-      console.log(updatedUser);
+      // console.log(updatedUser);
       res.send(updatedUser); // Send the updated user document as a response
       console.log("updated"); // Log a success message
   
