@@ -11,10 +11,13 @@ const Transfers = ({ currentUser }) => {
   let id = localStorage.token;
   let type = false;
 
+
+
+     // let EP = process.env.REACT_APP_EP
+     let endpoint = "http:localhost:4300/user/transfer";
+
   // Function to handle the transfer request
   const makeTransfer = () => {
-    // let EP = process.env.REACT_APP_EP
-    let endpoint = "http:localhost:4300/user/transfer";
 
     // Check if the description field is empty
     if (descr === "") {
@@ -32,7 +35,7 @@ const Transfers = ({ currentUser }) => {
 
         // Send the transfer request to the server
         axios
-          .post("/user/transfer", newTransfer)
+          .post(endpoint, newTransfer)
           .then((result) => {
             console.log({ result, rex: "y'all tripping" });
           })

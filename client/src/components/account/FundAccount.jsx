@@ -14,12 +14,11 @@ const FundAccount = () => {
   const [id,setId] = useState('')
 
   const { userId} = useParams()
-  console.log(userId);
+  console.log(email);
 
   // let amount = (newAmount*100);
   let amount = parseFloat(newAmount); // Convert string to number for calculations
 
-  // let balance = Number(balancee) + Number(newAmount);
   let balance = balancee + amount;
   let date = new Date().toLocaleDateString();
   let newObject = {balance, id:id, date,type:true, amount:newAmount, description:"Personal Funding"}
@@ -37,8 +36,6 @@ const FundAccount = () => {
     text: 'Pay Now',
     onSuccess: () =>{
       alert(`Your Account has been funded with ${newAmount}`);
-      // let endpoint = `http://localhost:4300/user/updatebalance/${userId}`;
-      // let newObject = {balance: balancee, id:id,date,type:true, amount:newAmount, description:"Personal Funding"}
       axios.post(`http://localhost:4300/user/updatebalance`, newObject).then((result) => {
         console.log(result);
       });
@@ -123,8 +120,8 @@ const FundAccount = () => {
               </button>
 
               {/* PaystackButton component for initiating the payment */}
-              {/* <PaystackButton className="btn btn-success" {...componentProps}  /> */}
-              <button onClick={fundAcc}>Pay</button>
+              <PaystackButton className="btn btn-success" {...componentProps}  />
+              {/* <button onClick={fundAcc}>Pay</button> */}
             </div>
           </div>
         </div>

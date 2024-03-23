@@ -51,6 +51,7 @@ const AccountDetails = () => {
             >
               <i className="fa fa-money" aria-hidden="true"></i> Fund Account
             </h4>
+            
             <h4
               className="btn btn-info text-white m-1"
               data-bs-toggle="modal"
