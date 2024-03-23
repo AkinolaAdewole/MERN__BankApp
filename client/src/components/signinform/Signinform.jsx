@@ -19,7 +19,7 @@ const Signinform = () => {
     let details = {email, password}
 
     const signin = () => {
-      axios.post("http://localhost:4300/user/signin", details)
+      axios.post("http://localhost:4300/signin", details)
         .then((result) => {
           if (result.data.response) {
             // Assuming the server sends user and token in the response

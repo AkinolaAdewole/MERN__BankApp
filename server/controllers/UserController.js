@@ -14,21 +14,31 @@ const signup = async (req, res) => {
 };
 
 
-  const signin = async(req, res)=>{
-    let {email, password}= req.body;
-    const user = await userModel.findOne({ email });
-    
-    if (user && (await user.matchPassword(password))){
-      const token = generateToken(res,user);
+const signin = async (req, res) => {
+  try {
+      const { email, password } = req.body;
+      const user = await userModel.findOne({ email });
 
-        // Send the user data and token in the response
-        delete user.password;
-        res.json({ user,token, response: true, message: "" });
-    }else{
-        res.status(401);
-        throw new Error('Invalid email or password')
-    }
+      if (user && (await user.matchPassword(password))) {
+          // Generate token
+          const token = generateToken(user);
+
+          // Omit sensitive data (password) from the user object
+          const { password: userPassword, ...userData } = user.toObject();
+
+          // Send the user data and token in the response
+          res.json({ user: userData, token, response: true, message: "Signin successful" });
+      } else {
+          // Invalid email or password
+          res.status(401).json({ response: false, message: "Invalid email or password" });
+      }
+  } catch (error) {
+      // Internal server error
+      console.error("Error signing in:", error);
+      res.status(500).json({ response: false, message: "Internal server error" });
   }
+};
+
 
   const getDashboard = async (req, res) => {
     const id = req.params.userId;
